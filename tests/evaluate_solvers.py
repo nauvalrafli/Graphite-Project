@@ -19,6 +19,7 @@
 
 from typing import List
 from graphite.solvers import *
+from graphite.solvers.aco_solver import MySolver
 from graphite.solvers.naive_v2_solver import NaiveSolver
 from graphite.data.dataset_generator_v2 import MetricTSPV2Generator
 from graphite.data.dataset_utils import load_default_dataset
@@ -115,7 +116,7 @@ def main():
     metric_problems, metric_sizes = MetricTSPV2Generator.generate_n_samples_without_edges(N_PROBLEMS, mock.loaded_datasets)
 
     # test_solvers = [NearestNeighbourSolver(), BeamSearchSolver(), HPNSolver()]
-    test_solvers = [NearestNeighbourSolver(), NaiveSolver()]
+    test_solvers = [MySolver()]
 
     run_times_dict, scores_dict = compare_problems(test_solvers, metric_problems, mock.loaded_datasets)
 
